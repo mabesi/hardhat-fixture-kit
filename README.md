@@ -71,6 +71,14 @@ await stealNFT({
 });
 ```
 
+## 📚 Documentation
+
+For complete usage guides, internal architecture, and advanced features, visit the **[Documentation Folder](./docs/index.md)**.
+
+- [Introduction & Problems Solved](./docs/introduction.md)
+- [ERC-20 Seeding Guide](./docs/erc20.md)
+- [NFT Seeding Guide](./docs/erc721.md)
+
 ## Ethers v6 Compatibility
 
 This library is built native for Ethers v6. It uses modern Provider and Signer patterns. 
