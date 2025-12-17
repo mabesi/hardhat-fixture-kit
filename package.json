@@ -27,7 +27,15 @@
     "erc20",
     "erc721"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mabesi/hardhat-fixture-kit.git"
+  },
+  "author": "Plinio <mabesi@users.noreply.github.com>",
+  "bugs": {
+    "url": "https://github.com/mabesi/hardhat-fixture-kit/issues"
+  },
+  "homepage": "https://github.com/mabesi/hardhat-fixture-kit#readme",
   "license": "MIT",
   "peerDependencies": {
     "ethers": "^6.0.0",

@@ -25,13 +25,13 @@ export async function stealNFT(options: StealNFTRequest) {
     try {
         owner = await nft.ownerOf(options.tokenId);
     } catch (e) {
-        throw new Error(\`Could not find owner of NFT \${options.nftAddress} ID \${options.tokenId}. It might be burned or invalid.\`);
-  }
+        throw new Error(`Could not find owner of NFT ${options.nftAddress} ID ${options.tokenId}. It might be burned or invalid.`);
+    }
 
-  const ownerSigner = await impersonateAccount(owner, provider);
-  const nftAsOwner = nft.connect(ownerSigner) as Contract;
+    const ownerSigner = await impersonateAccount(owner, provider);
+    const nftAsOwner = nft.connect(ownerSigner) as Contract;
 
-  await (await nftAsOwner.transferFrom(owner, options.to, options.tokenId)).wait();
+    await (await nftAsOwner.transferFrom(owner, options.to, options.tokenId)).wait();
 
-  await stopImpersonatingAccount(owner);
+    await stopImpersonatingAccount(owner);
 }
