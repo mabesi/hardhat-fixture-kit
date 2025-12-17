@@ -1,5 +1,8 @@
 # Hardhat Fixture Kit
 
+![Hardhat Fixture Kit Banner](./banner.png)
+
+
 ![npm version](https://img.shields.io/npm/v/hardhat-fixture-kit)
 ![License](https://img.shields.io/npm/l/hardhat-fixture-kit)
 
