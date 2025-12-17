@@ -2,6 +2,8 @@
   "name": "hardhat-fixture-kit",
   "version": "1.0.0",
   "description": "A developer-friendly toolkit for setting up state and seeding tokens/NFTs in Hardhat mainnet forks.",
+  "author": "Plinio Mabesi",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -31,12 +33,10 @@
     "type": "git",
     "url": "git+https://github.com/mabesi/hardhat-fixture-kit.git"
   },
-  "author": "Plinio <mabesi@users.noreply.github.com>",
   "bugs": {
     "url": "https://github.com/mabesi/hardhat-fixture-kit/issues"
   },
   "homepage": "https://github.com/mabesi/hardhat-fixture-kit#readme",
-  "license": "MIT",
   "peerDependencies": {
     "ethers": "^6.0.0",
     "hardhat": "^2.19.0"
