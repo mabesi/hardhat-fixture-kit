@@ -1,0 +1,51 @@
+{
+  "name": "hardhat-fixture-kit",
+  "version": "1.0.0",
+  "description": "A developer-friendly toolkit for setting up state and seeding tokens/NFTs in Hardhat mainnet forks.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+  },
+  "keywords": [
+    "hardhat",
+    "ethereum",
+    "ethers-v6",
+    "testing",
+    "fixture",
+    "impersonate",
+    "erc20",
+    "erc721"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "ethers": "^6.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "ethers": "^6.9.0",
+    "hardhat": "^2.19.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
