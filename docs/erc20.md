@@ -79,3 +79,6 @@ await seedFixture({
   ]
 });
 ```
+
+---
+[⬅️ Previous: Introduction](./introduction.md) | [Next: NFT Seeding ➡️](./erc721.md)

@@ -36,3 +36,6 @@ This ensures the transfer transaction **always succeeds**, regardless of the wha
 ## Hardhat Integration
 
 The library detects if it is running inside a Hardhat environment by checking for `network.provider`. It prefers using `network.provider.request({ method: "hardhat_impersonateAccount" })` for direct RPC access.
+
+---
+[⬅️ Previous: NFT Seeding](./erc721.md)

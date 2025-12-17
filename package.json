@@ -1,7 +1,10 @@
 {
   "name": "hardhat-fixture-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A developer-friendly toolkit for setting up state and seeding tokens/NFTs in Hardhat mainnet forks.",
+  "files": [
+    "dist"
+  ],
   "author": "Plinio Mabesi",
   "license": "MIT",
   "main": "dist/index.js",

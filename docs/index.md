@@ -24,3 +24,5 @@ Under-the-hood details.
 - Ethers v6 implementation.
 - Safety mechanisms (Auto-Funding Whales).
 - Hardhat integration.
+
+Next: [Introduction & Concepts](./introduction.md)

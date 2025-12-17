@@ -87,6 +87,6 @@ For complete usage guides, internal architecture, and advanced features, visit t
 This library is built native for Ethers v6. It uses modern Provider and Signer patterns. 
 If you are migrating from v5, ensure you are using `hardhat-ethers` ^3.0.0.
 
-## License
+## 📄 License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).

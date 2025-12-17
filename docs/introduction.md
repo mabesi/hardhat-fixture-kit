@@ -43,3 +43,6 @@ A Hardhat feature (`hardhat_impersonateAccount`) that allows you to sign transac
 
 ### Whale
 An account (contract or EOA) that holds a large supply of a specific token. We "steal" tokens from these accounts to seed our tests.
+
+---
+[⬅️ Previous: Home](./index.md) | [Next: ERC-20 Seeding ➡️](./erc20.md)
