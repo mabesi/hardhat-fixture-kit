@@ -1,6 +1,6 @@
 {
   "name": "hardhat-fixture-kit",
-  "version": "1.0.0",
+  "version": "0.0.1-alpha",
   "description": "A developer-friendly toolkit for setting up state and seeding tokens/NFTs in Hardhat mainnet forks.",
   "files": [
     "dist"
@@ -12,9 +12,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "scripts": {

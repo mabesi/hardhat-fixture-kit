@@ -1,4 +1,4 @@
-import { ethers, Signer, Contract, BaseContract, ContractRunner } from "ethers";
+import { ethers, Contract, BrowserProvider, JsonRpcProvider } from "ethers";
 import { impersonateAccount, stopImpersonatingAccount } from "./utils/impersonate";
 import { WHALES, TOKENS } from "./data/whales";
 
@@ -17,7 +17,7 @@ export interface UserRequest {
 export interface SeedFixtureOptions {
     approveTarget?: string;
     users: UserRequest[];
-    provider?: ethers.BrowserProvider | ethers.JsonRpcProvider | any; // Accept various provider types
+    provider?: BrowserProvider | JsonRpcProvider; // Accept various provider types
 }
 
 const WETH_ABI = [
@@ -48,7 +48,8 @@ export async function seedFixture(options: SeedFixtureOptions) {
     // but for safety let's use the one imported from 'ethers' combined with Hardhat global if present,
     // OR rely on the `provider` option.
 
-    const provider = options.provider || (global as any).ethers?.provider;
+    const globalObj = global as { ethers?: { provider?: BrowserProvider | JsonRpcProvider } };
+    const provider = options.provider || globalObj.ethers?.provider;
     if (!provider) {
         throw new Error("No provider found. Please pass 'provider' in options or ensure hardhat-ethers is loaded.");
     }
@@ -73,7 +74,7 @@ export async function seedFixture(options: SeedFixtureOptions) {
                 continue;
             }
 
-            const isWeth = await isWrappedNative(tokenAddress, provider);
+            // Check if this is a wrapped native token (handled below)
             // Simplified WETH check: if symbol is WETH or WMATIC or request says so.
             // Better: check against known WETH addresses or try to see if it has 'deposit'.
 
@@ -101,12 +102,15 @@ export async function seedFixture(options: SeedFixtureOptions) {
             // This is a heuristic. If symbol is WETH, we do this.
             let symbol = tokenReq.symbol;
             if (!symbol) {
-                try { symbol = await tokenContract.symbol(); } catch { }
+                try {
+                    symbol = await tokenContract.symbol();
+                } catch {
+                    // Symbol not available, continue without it
+                }
             }
 
             if (symbol && ["WETH", "WMATIC", "WBNB", "WAVAX"].includes(symbol.toUpperCase())) {
                 // Perform Auto-Wrap
-                const userSigner = await provider.getSigner(user.account);
 
                 // We need to ensure the user has enough ETH to wrap.
                 // But wait, the goal is to seed the user. So we should send ETH to the user frist?
@@ -182,8 +186,4 @@ export async function seedFixture(options: SeedFixtureOptions) {
     }
 }
 
-async function isWrappedNative(address: string, provider: any): Promise<boolean> {
-    // Basic heuristic: check if code exists and maybe symbol
-    // For now we rely on the symbol check in the main loop for simplicity as requested by "intelligent enough"
-    return false;
-}
+

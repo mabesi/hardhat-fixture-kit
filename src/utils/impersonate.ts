@@ -1,8 +1,7 @@
-import { HardhatEthersProvider } from "@nomicfoundation/hardhat-ethers/internal/hardhat-ethers-provider";
-import { Signer } from "ethers";
+import { Signer, BrowserProvider, JsonRpcProvider } from "ethers";
 import { network } from "hardhat";
 
-export async function impersonateAccount(address: string, provider: any): Promise<Signer> {
+export async function impersonateAccount(address: string, provider: BrowserProvider | JsonRpcProvider): Promise<Signer> {
     // Use Hardhat's helper if available (requires hardhat-ethers)
     if (network.provider && typeof network.provider.request === "function") {
         await network.provider.request({
@@ -20,11 +19,12 @@ export async function impersonateAccount(address: string, provider: any): Promis
     if (funder) {
         const whaleBalance = await provider.getBalance(address);
         if (whaleBalance < BigInt("1000000000000000000")) { // 1 ETH
-            await provider.sendTransaction({
+            const funderAddress = typeof funder === 'string' ? funder : funder.address;
+            const funderSigner = await provider.getSigner(funderAddress);
+            await funderSigner.sendTransaction({
                 to: address,
                 value: BigInt("1000000000000000000"), // 1 ETH
-                from: typeof funder === 'string' ? funder : funder.address
-            })
+            });
         }
     }
 

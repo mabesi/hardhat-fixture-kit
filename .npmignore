@@ -1,0 +1,30 @@
+# Source files
+src/
+tsconfig.json
+tsup.config.ts
+
+# Development files
+.vscode/
+.github/
+*.test.ts
+*.spec.ts
+coverage/
+
+# Documentation (keep only README and LICENSE)
+docs/
+banner.png
+
+# Config files
+.eslintrc.json
+.prettierrc
+.gitignore
+
+# Environment and temp files
+.env
+.env.*
+*.log
+.DS_Store
+
+# Git
+.git/
+.gitattributes

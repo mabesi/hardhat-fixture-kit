@@ -1,11 +1,11 @@
-import { ethers, Contract } from "ethers";
+import { Contract, BrowserProvider, JsonRpcProvider } from "ethers";
 import { impersonateAccount, stopImpersonatingAccount } from "./utils/impersonate";
 
 export interface StealNFTRequest {
     nftAddress: string;
     tokenId: number | string; // Support BigInts passed as string
     to: string;
-    provider?: any;
+    provider?: BrowserProvider | JsonRpcProvider;
 }
 
 const ERC721_ABI = [
@@ -14,7 +14,8 @@ const ERC721_ABI = [
 ];
 
 export async function stealNFT(options: StealNFTRequest) {
-    const provider = options.provider || (global as any).ethers?.provider;
+    const globalObj = global as { ethers?: { provider?: BrowserProvider | JsonRpcProvider } };
+    const provider = options.provider || globalObj.ethers?.provider;
     if (!provider) {
         throw new Error("No provider found.");
     }
